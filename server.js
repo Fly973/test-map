@@ -28,7 +28,7 @@ const fs = require("fs");
 const config = require("./config");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Railway/云平台会注入 PORT 环境变量
 
 /* ============ 工具：调用高德 Web 服务 API ============ */
 /**
@@ -102,5 +102,5 @@ app.use(express.static(path.join(__dirname, "public")));
 app.listen(PORT, () => {
   console.log(`✅ 高德路线规划测试项目已启动`);
   console.log(`   打开浏览器访问: http://localhost:${PORT}`);
-  console.log(`   ⚠️ 若尚未在 config.js 填写 Web 服务 Key，接口调用会提示未配置`);
+  console.log(`   ⚠️ 若未配置 AMAP_WEB_KEY 环境变量，接口调用会提示未配置`);
 });
