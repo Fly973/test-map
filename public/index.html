@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高德地图 · 多目的地路线规划</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 左侧：输入与操作区 -->
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <h1>🗺️ 路线规划</h1>
+        <p class="subtitle">高德 Web API 调用流程测试</p>
+      </header>
+
+      <!-- 出发地 -->
+      <div class="form-group">
+        <label for="origin-input">🚩 出发地</label>
+        <input id="origin-input" type="text" placeholder="输入出发地，如：北京南站">
+      </div>
+
+      <!-- 途经地址列表 -->
+      <div class="form-group">
+        <div class="label-row">
+          <label>📍 途经地址 <span id="addr-count" class="badge">0</span></label>
+          <button id="add-addr-btn" class="btn btn-add" type="button">＋ 添加地址</button>
+        </div>
+        <ul id="addr-list"></ul>
+        <button id="batch-btn" class="btn btn-add btn-batch" type="button">📋 批量粘贴地址</button>
+        <div id="batch-area" class="hidden">
+          <textarea id="batch-input" rows="5" placeholder="粘贴地址，每行一个，或用逗号、分号、顿号分隔&#10;示例：&#10;天安门&#10;故宫, 颐和园；圆明园"></textarea>
+          <div class="batch-ops">
+            <button id="batch-confirm" class="btn btn-mini btn-primary-mini" type="button">✓ 确认添加</button>
+            <button id="batch-cancel" class="btn btn-mini" type="button">取消</button>
+          </div>
+          <p class="hint">自动按换行 / 逗号 / 分号 / 顿号拆分并去重</p>
+        </div>
+        <p class="hint">支持任意数量地址，自动按"顺路"排序，也可手动 ↑↓ 调整</p>
+      </div>
+
+      <!-- 操作 -->
+      <button id="plan-btn" class="btn btn-primary" type="button">🚀 规划路线</button>
+
+      <!-- 状态提示 -->
+      <div id="status" class="status"></div>
+
+      <!-- 结果摘要 -->
+      <div id="summary" class="summary hidden"></div>
+    </aside>
+
+    <!-- 右侧：地图视图（可自由拖拽/缩放） -->
+    <main id="map-area">
+      <div id="map-container"></div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
