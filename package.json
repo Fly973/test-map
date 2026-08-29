@@ -1,0 +1,12 @@
+{
+  "name": "amap-route-demo",
+  "version": "1.0.0",
+  "description": "高德 Web API 调用流程测试项目：地理编码 + 顺路排序 + 驾车路线规划 + 地图展示",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
